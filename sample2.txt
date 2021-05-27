@@ -1,2 +1,1 @@
 samplefile 2
-git revert test2
