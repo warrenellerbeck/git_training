@@ -24,7 +24,7 @@ pipeline {
         //Delayed Deployment to PRODUCTION Environmnet
         stage{
             steps{
-                timeout time: 5, unti:'DAYS' body: {
+                timeout ( time: 5, unti:'DAYS' )body: {
                     input message: "Approve PRODUCTION Deployment"
                 }
 
