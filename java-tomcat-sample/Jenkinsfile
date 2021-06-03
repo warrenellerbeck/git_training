@@ -12,11 +12,25 @@ pipeline {
                 }
             }
         }
+
+        //Deploy to Staging Environmnet
         stage('Deploy in Staging Environment'){
             steps{
-            build job: 'Deploy in Staging Environment'
+                build job: 'Deploy in Staging Environment'
 
             }           
+        }
+
+        //Delayed Deployment to PRODUCTION Environmnet
+        stage{
+            steps{
+                timeout time: 5, unti:'DAYS' body: {
+                    input message: "Approve PRODUCTION Deployment"
+                }
+
+                build job: "deploy_application_production"
+
+            }
         }
         
     }
